@@ -1,6 +1,7 @@
 # front-end-best-practices
 一些前端的最佳实践，包括 html,css,javascript
 
+
 ## HTML
 
 ### 语义
@@ -216,10 +217,9 @@ div {
 }
 ```
 
-### Positioning
+### 定位
 
-There are many ways to position elements in CSS but try to restrict yourself to the
-properties/values below. By order of preference:
+css有很多方法来定位元素，但是最好使用下面的属性/值，按照优先顺序:
 
 ```
 display: block;
@@ -230,11 +230,10 @@ position: absolute;
 position: fixed;
 ```
 
-### Selectors
+### 选择器
 
-Minimize selectors tightly coupled to the DOM. Consider adding a class to the elements
-you want to match when your selector exceeds 3 structural pseudo-classes, descendant or
-sibling combinators.
+减少选择器紧密耦合的DOM。考虑添加一个类的元素你想当你超过3结构伪类选择器匹配,或后代
+兄弟姐妹组合子。
 
 ```css
 /* bad */
@@ -244,7 +243,7 @@ div:first-of-type :last-child > p ~ *
 div:first-of-type .info
 ```
 
-Avoid overloading your selectors when you don't need to.
+避免重载你的选择器在你不需要的时候。
 
 ```css
 /* bad */
@@ -258,11 +257,10 @@ img[src$=svg], ul > li:first-child {
 }
 ```
 
-### Specificity
+### 特殊点
 
-Don't make values and selectors hard to override. Minimize the use of `id`'s
-and avoid `!important`.
-
+不要让值和选择器难以覆盖。减少使用id和
+避免“!important”。
 ```css
 /* bad */
 .bar {
@@ -283,8 +281,7 @@ and avoid `!important`.
 
 ### Overriding
 
-Overriding styles makes selectors and debugging harder. Avoid it when possible.
-
+Overriding的样式让选择器和调试困难。尽可能的避免它。
 ```css
 /* bad */
 li {
@@ -300,9 +297,9 @@ li + li {
 }
 ```
 
-### Inheritance
+### 继承
 
-Don't duplicate style declarations that can be inherited.
+不要重复声明样式,可以继承的。
 
 ```css
 /* bad */
@@ -316,10 +313,10 @@ div {
 }
 ```
 
-### Brevity
+### 简洁
 
-Keep your code terse. Use shorthand properties and avoid using multiple properties when
-it's not needed.
+保持代码简洁。尽可能的使用简写属性,避免使用多个属性。
+
 
 ```css
 /* bad */
@@ -341,9 +338,9 @@ div {
 }
 ```
 
-### Language
+### 语言编码
 
-Prefer English over math.
+只能是英语和数字
 
 ```css
 /* bad */
@@ -357,10 +354,10 @@ Prefer English over math.
 }
 ```
 
-### Vendor prefixes
+### 前缀
 
-Kill obsolete vendor prefixes aggressively. If you need to use them, insert them before the
-standard property.
+积极除掉过时的前缀。如果你需要使用它们,插入他们的标准属性之前
+
 
 ```css
 /* bad */
@@ -891,3 +888,4 @@ compact(["foo", 0]);
 unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 ```
+
