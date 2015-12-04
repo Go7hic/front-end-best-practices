@@ -483,11 +483,8 @@ div {
 
 ## JavaScript
 
-### Performance
-
-Favor readability, correctness and expressiveness over performance. JavaScript will basically never
-be your performance bottleneck. Optimize things like image compression, network access and DOM
-reflows instead. If you remember just one guideline from this document, choose this one.
+### 性能
+代码的可读性，正确性，可表达性优于性能。JavaScript 基本上不会有性能上的瓶颈。需要优化的东西像 图片优化，网络请求优化，DOM 渲染优化。如果你要在这个文档记住一条，那就记住这个吧。
 
 ```javascript
 // bad (albeit way faster)
@@ -523,9 +520,8 @@ const merge = (...sources) => Object.assign({}, ...sources);
 merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
 ```
 
-### Natives
-
-Rely on native methods as much as possible.
+### 原生方法
+尽可能的使用语言自带的方法
 
 ```javascript
 // bad
@@ -537,9 +533,9 @@ const toArray = (() =>
 )();
 ```
 
-### Coercion
+### 类型转换（隐式转换）
 
-Embrace implicit coercion when it makes sense. Avoid it otherwise. Don't cargo-cult.
+请放心使用类型隐式转换当那样做有意义的时候，虽然说是要避免使用它，但是也不要盲目相信权威。
 
 ```javascript
 // bad
@@ -549,9 +545,10 @@ if (x === undefined || x === null) { ... }
 if (x == undefined) { ... }
 ```
 
-### Loops
+### 循环
 
 Don't use loops as they force you to use mutable objects. Rely on `array.prototype` methods.
+
 
 ```javascript
 // bad
@@ -563,7 +560,6 @@ const sum = arr => {
   }
   return sum;
 };
-
 sum([1, 2, 3]); // => 6
 
 // good
@@ -618,8 +614,7 @@ const sortNumbers = (...numbers) => numbers.sort();
 ```
 
 ### Apply
-
-Forget about `apply()`. Use the spread operator instead.
+忘了 `apply()`吧， 使用 spread operator 代替.
 
 ```javascript
 const greet = (first, last) => `Hi ${first} ${last}`;
@@ -717,9 +712,9 @@ const contains = (() =>
 contains(["foo", "bar"], "baz"); // => false
 ```
 
-### Variables
+### 变量
 
-Favor `const` over `let` and `let` over `var`.
+赞同使用 `const` 代替 `let`,`let` 代替 `var`。
 
 ```javascript
 // bad
@@ -731,10 +726,8 @@ const me = new Map();
 me.set("name", "Ben").set("country", "Belgium");
 ```
 
-### Conditions
-
-Favor IIFE's and return statements over if, else if, else and switch statements.
-
+### 条件
+赞同用 匿名执行函数返回语句 代替 if,else,switch 语句。
 ```javascript
 // bad
 var grade;
@@ -755,9 +748,9 @@ const grade = (() => {
 })();
 ```
 
-### Object iteration
+### 对象迭代
 
-Avoid `for...in` when you can.
+尽可能的避免使用 `for .. in`
 
 ```javascript
 const shared = { foo: "foo" };
@@ -778,10 +771,9 @@ for (var prop in obj) {
 Object.keys(obj).forEach(prop => console.log(prop));
 ```
 
-### Objects as Maps
+### 使用 Map 创建对象
 
-While objects have legitimate use cases, maps are usually a better, more powerful choice. When in
-doubt, use a `Map`.
+在使用对象的时候，Map 是个更好的选择
 
 ```javascript
 // bad
@@ -804,10 +796,9 @@ me.set("country", "Belgium");
 me.size; // => 3
 ```
 
-### Curry
+### 柯里化
 
-Currying is a powerful but foreign paradigm for many developers. Don't abuse it as its appropriate
-use cases are fairly unusual.
+柯里化很强大，但是很多开发者不是很熟悉。不要滥用它，适当的使用是很不错的。
 
 ```javascript
 // bad
@@ -819,9 +810,9 @@ const sum = (a, b) => a + b;
 sum(5, 3); // => 8
 ```
 
-### Readability
+### 可读性
 
-Don't obfuscate the intent of your code by using seemingly smart tricks.
+不要用一些看似聪明的小技巧混淆代码的可读性
 
 ```javascript
 // bad
@@ -845,9 +836,9 @@ const n = ~~3.14;
 const n = Math.floor(3.14);
 ```
 
-### Code reuse
+### 代码复用
 
-Don't be afraid of creating lots of small, highly composable and reusable functions.
+不要害怕创造许多小的，高度组合可重复使用的功能
 
 ```javascript
 // bad
@@ -868,9 +859,9 @@ const product = (a, b) => a * b;
 const triple = product.bind(null, 3);
 ```
 
-### Dependencies
+### 依赖
 
-Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:
+减少依赖，你不熟悉第三方代码，不要为了一个简单的方法加载一个库。
 
 ```javascript
 // bad
