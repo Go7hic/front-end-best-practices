@@ -358,7 +358,6 @@ div {
 
 积极除掉过时的前缀。如果你需要使用它们,插入他们的标准属性之前
 
-
 ```css
 /* bad */
 div {
@@ -380,10 +379,8 @@ div {
 }
 ```
 
-### Animations
-
-Favor transitions over animations. Avoid animating other properties than
-`opacity` and `transform`.
+### 动画
+用 transitions 代替  animations。动画执行的时候尽量避免使用其他属性，除了 `opacity` 和 `transform`.
 
 ```css
 /* bad */
@@ -403,10 +400,9 @@ div:hover {
 }
 ```
 
-### Units
+### 单位
 
-Use unitless values when you can. Favor `rem` if you use relative units. Prefer seconds over
-milliseconds.
+这个具体看场景，当你使用相对单位的时候推荐使用`rem`。用 秒 代替 毫秒
 
 ```css
 /* bad */
@@ -426,10 +422,9 @@ div {
 }
 ```
 
-### Colors
+### 颜色
 
-If you need transparency, use `rgba`. Otherwise, always use the hexadecimal format.
-
+如果你需要使用透明，使用 `rgba`。否则，使用 16 进制格式的
 ```css
 /* bad */
 div {
@@ -442,9 +437,9 @@ div {
 }
 ```
 
-### Drawing
+### 图画
 
-Avoid HTTP requests when the resources are easily replicable with CSS.
+如果能用 css 代替最好避免使用 HTTP 请求
 
 ```css
 /* bad */
@@ -465,7 +460,7 @@ div::before {
 
 ### Hacks
 
-Don't use them.
+不要使用这些
 
 ```css
 /* bad */
@@ -506,9 +501,9 @@ const square = n => n * n;
 const result = arr.filter(isEven).map(square);
 ```
 
-### Statelessness
+### 无状态
 
-Try to keep your functions pure. All functions should ideally produce no side-effects, use no outside data and return new objects instead of mutating existing ones.
+尽量让你的函数保持干净，所有的函数最好没有副作用，不要使用外部数据，返回一个新的对象代替现在已经存在的。
 
 ```javascript
 // bad
@@ -547,8 +542,7 @@ if (x == undefined) { ... }
 
 ### 循环
 
-Don't use loops as they force you to use mutable objects. Rely on `array.prototype` methods.
-
+当你不得已使用可变的对象时最好不要使用循环，使用`array.prototype`的方法。
 
 ```javascript
 // bad
@@ -568,8 +562,8 @@ const sum = arr =>
 
 sum([1, 2, 3]); // => 6
 ```
-If you can't, or if using `array.prototype` methods is arguably abusive, use recursion.
 
+如果你不想，或者说使用 `array.prototype`方法很不恶心，使用递归
 ```javascript
 // bad
 const createDivs = howMany => {
@@ -594,15 +588,14 @@ const createDivs = howMany => {
 };
 createDivs(5);
 ```
-
-Here's a [generic loop function](https://gist.github.com/bendc/6cb2db4a44ec30208e86) making recursion easier to use.
+这是一个通用的[循环函数]((https://gist.github.com/bendc/6cb2db4a44ec30208e86))，让递归更简单
 
 ### Arguments
 
-Forget about the `arguments` object. The rest parameter is always a better option because:
+忘了  `arguments` 对象。其他的参数是个更好的选择，因为：
+1. 可以 v 命名，能够让你有个更符合函数期待的参数
+2. 和数组没啥大区别，可以让你更方便的使用
 
-1. it's named, so it gives you a better idea of the arguments the function is expecting
-2. it's a real array, which makes it easier to use.
 
 ```javascript
 // bad
@@ -614,7 +607,7 @@ const sortNumbers = (...numbers) => numbers.sort();
 ```
 
 ### Apply
-忘了 `apply()`吧， 使用 spread operator 代替.
+忘了 `apply()`吧， 使用操作符代替.
 
 ```javascript
 const greet = (first, last) => `Hi ${first} ${last}`;
@@ -629,8 +622,7 @@ greet(...person);
 
 ### Bind
 
-Don't `bind()` when there's a more idiomatic approach.
-
+当有更常用的办法时不要用 `bind()`
 ```javascript
 // bad
 ["foo", "bar"].forEach(func.bind(this));
@@ -662,9 +654,9 @@ const person = {
 }
 ```
 
-### Higher-order functions
+### 高阶函数
 
-Avoid nesting functions when you don't have to.
+当你没必要的时候避免使用嵌套函数
 
 ```javascript
 // bad
@@ -674,10 +666,9 @@ Avoid nesting functions when you don't have to.
 [1, 2, 3].map(String);
 ```
 
-### Composition
+### 组合
 
-Avoid multiple nested function calls. Use composition instead.
-
+避免多个函数的嵌套，使用组合代替
 ```javascript
 const plus1 = a => a + 1;
 const mult2 = a => a * 2;
@@ -691,10 +682,9 @@ const addThenMult = pipeline(plus1, mult2);
 addThenMult(5); // => 12
 ```
 
-### Caching
+### 缓存
 
-Cache feature tests, large data structures and any expensive operation.
-
+缓存功能测试，大型的数据结构和任何昂贵的操作
 ```javascript
 // bad
 const contains = (arr, value) =>
