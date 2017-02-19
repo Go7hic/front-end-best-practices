@@ -872,3 +872,4 @@ unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 ```
 
+[English](https://github.com/bendc/frontend-guidelines)
