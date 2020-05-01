@@ -104,11 +104,10 @@ HTML5为我们提供大量的语义元素的目的就是为了准确地描述内
 <h1><img alt="My Company, Inc." src="logo.png"></h1>
 ```
 
-### 语言编码
+### 语言和字符编码
+语言虽然是可选的，但还是推荐在根元素上声明它。
 
-
-虽然语言和字符编码的定义是可选的,但还是推荐声明在文档级别,即使他们HTTP头中指定。在任何支持utf - 8
-字符编码里建议声明 utf-8 编码
+HTML标准要求页面使用UTF-8字符编码。必须声明它，虽然可以在Content-Type HTTP头文件中声明它，但建议始终在文档级别声明它。
 
 ```html
 <!-- bad -->
@@ -871,5 +870,3 @@ compact(["foo", 0]);
 unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 ```
-
-[English](https://github.com/bendc/frontend-guidelines)
