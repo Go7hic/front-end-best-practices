@@ -218,13 +218,15 @@ div {
 css有很多方法来定位元素，但是最好使用下面的属性/值，按照优先顺序:
 
 ```
-display: block;
 display: flex;
+display: grid;
+display: block;
 position: relative;
 position: sticky;
 position: absolute;
 position: fixed;
 ```
+应该尽量避免从常规文档流中删除元素，例如，使用position：absolute。
 
 ### 选择器
 
